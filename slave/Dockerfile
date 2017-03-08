@@ -23,7 +23,7 @@ RUN yum clean all && \
 COPY configuration/* /var/lib/jenkins/
 
 RUN tar xzf /var/lib/jenkins/oc-3.4.1.7-linux.tar.gz
-RUN export PATH=$PATRH:.
+RUN export PATH=$PATH:.
 USER 1001
 
 # Run the JNLP client by default
