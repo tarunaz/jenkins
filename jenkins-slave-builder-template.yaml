@@ -41,6 +41,7 @@ objects:
       type: Git
     strategy:
       dockerStrategy:
+        noCache: true
         from:
           kind: DockerImage
           name: ${IMAGE_NAME}
