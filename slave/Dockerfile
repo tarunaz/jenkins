@@ -1,7 +1,7 @@
 # The FROM will be replaced when building in OpenShift
 FROM rhel7/rhel
 
-MAINTAINER Siamak Sadeghianfar <ssadeghi@redhat.com>
+MAINTAINER Tarun Mehra <tmehra@redhat.com>
 
 # Install headless Java
 USER root
@@ -26,6 +26,7 @@ USER 1001
 COPY configuration/settings.xml /home/jenkins/.m2/
 USER 1001
 
+RUN tar xzf /configuration/oc-3.4.1.7-linux.tar.gz
 
 # Run the JNLP client by default
 # To use swarm client, specify "/var/lib/jenkins/run-swarm-client" as Command
