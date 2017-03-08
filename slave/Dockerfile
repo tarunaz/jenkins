@@ -21,13 +21,8 @@ RUN yum clean all && \
 
 # Copy the entrypoint
 COPY configuration/* /var/lib/jenkins/
-USER 1001
-
 COPY configuration/settings.xml /home/jenkins/.m2/
-USER 1001
-
 COPY configuration/settings.xml /var/lib/jenkins/.m2/
-USER 1001
 
 RUN tar xzf /var/lib/jenkins/oc-3.4.1.7-linux.tar.gz
 USER 1001
