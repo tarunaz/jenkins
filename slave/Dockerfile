@@ -26,7 +26,11 @@ USER 1001
 COPY configuration/settings.xml /home/jenkins/.m2/
 USER 1001
 
-#RUN tar xzf oc-3.4.1.7-linux.tar.gz
+COPY configuration/settings.xml /var/lib/jenkins/.m2/
+USER 1001
+
+RUN tar xzf /var/lib/jenkins/oc-3.4.1.7-linux.tar.gz
+USER 1001
 
 # Run the JNLP client by default
 # To use swarm client, specify "/var/lib/jenkins/run-swarm-client" as Command
