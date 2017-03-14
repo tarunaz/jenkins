@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
@@ -11,196 +10,40 @@
    </server>
  </servers>
 
- <mirrors>
-   <mirror>  
-     <id>nexus</id>
-     <mirrorOf>*</mirrorOf>
-     <url>http://nexus-nexus.cloudapps.rhc-lab.iad.redhat.com/content/repositories/redhat-uspto</url>
-   </mirror>
- </mirrors>
-
- <proxies>
-   <!-- ### configured http proxy ### -->
-  </proxies>
-
+  <mirrors>
+    <mirror>
+      <!--This sends everything else to /public -->
+      <id>nexus</id>
+      <mirrorOf>*</mirrorOf>
+      <url>hhttp://nexus-nexus.cloudapps.rhc-lab.iad.redhat.com/content/groups/public</url>
+    </mirror>
+  </mirrors>
+  
   <profiles>
-
-    <!-- JBoss EAP Maven repository -->
-    <profile>
-      <id>jboss-eap-repository</id>
-      <activation>
-        <property>
-          <name>com.redhat.xpaas.repo.redhatga</name>
-          <value/>
-        </property>
-      </activation>
-      <repositories>
-        <repository>
-          <id>jboss-eap-repository</id>
-          <url>https://maven.repository.redhat.com/techpreview/all</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </repository>
-      </repositories>
-      <pluginRepositories>
-        <pluginRepository>
-          <id>jboss-eap-plugin-repository</id>
-          <url>https://maven.repository.redhat.com/techpreview/all</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </pluginRepository>
-      </pluginRepositories>
-    </profile>
-
-    <!-- JBoss EAP Maven repository (HTTP version, disabled by default) -->
-    <profile>
-      <id>jboss-eap-repository-insecure</id>
-      <repositories>
-        <repository>
-          <id>jboss-eap-repository</id>
-          <url>http://maven.repository.redhat.com/techpreview/all</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </repository>
-      </repositories>
-      <pluginRepositories>
-        <pluginRepository>
-          <id>jboss-eap-plugin-repository</id>
-          <url>http://maven.repository.redhat.com/techpreview/all</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </pluginRepository>
-      </pluginRepositories>
-    </profile>
-
-    <!-- JBoss Community Maven repository -->
-    <profile>
-      <id>jboss-community-repository</id>
-      <activation>
-        <property>
-          <name>com.redhat.xpaas.repo.jbossorg</name>
-          <value/>
-        </property>
-      </activation>
-      <repositories>
-        <repository>
-          <id>jboss-community-repository</id>
-          <url>https://repository.jboss.org/nexus/content/groups/public/</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </repository>
-      </repositories>
-      <pluginRepositories>
-        <pluginRepository>
-          <id>jboss-community-plugin-repository</id>
-          <url>https://repository.jboss.org/nexus/content/groups/public/</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </pluginRepository>
-      </pluginRepositories>
-    </profile>
-
-    <!-- JBoss Community Maven repository (HTTP version, disabled by default) -->
-    <profile>
-      <id>jboss-community-repository-insecure</id>
-      <repositories>
-        <repository>
-          <id>jboss-community-repository</id>
-          <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </repository>
-      </repositories>
-      <pluginRepositories>
-        <pluginRepository>
-          <id>jboss-community-plugin-repository</id>
-          <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </pluginRepository>
-      </pluginRepositories>
-    </profile>
-
-    <!-- Override the repository "central" from the Maven Super POM, to set HTTPS by default -->
     <profile>
       <id>nexus</id>
+      <!--Enable snapshots for the built in central repo to direct -->
+      <!--all requests to nexus via the mirror -->
       <repositories>
         <repository>
           <id>central</id>
-          <url>https://repo1.maven.org/maven2</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
+          <url>http://central</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
         </repository>
       </repositories>
-      <pluginRepositories>
+     <pluginRepositories>
         <pluginRepository>
           <id>central</id>
-          <url>https://repo1.maven.org/maven2</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
+          <url>http://central</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
         </pluginRepository>
       </pluginRepositories>
     </profile>
-
-    <!-- central repositories via HTTP. Disabled by default. -->
-    <profile>
-      <id>insecurecentral</id>
-      <repositories>
-        <repository>
-          <id>central</id>
-          <url>http://repo1.maven.org/maven2</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-        </repository>
-      </repositories>
-      <pluginRepositories>
-        <pluginRepository>
-          <id>central</id>
-          <url>http://repo1.maven.org/maven2</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-        </pluginRepository>
-      </pluginRepositories>
-    </profile>
-
   </profiles>
   <activeProfiles>
+    <!--make the profile active all the time -->
     <activeProfile>nexus</activeProfile>
   </activeProfiles>
 </settings>
