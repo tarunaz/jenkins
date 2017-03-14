@@ -16,7 +16,7 @@
      <id>nexus</id>
      <mirrorOf>*</mirrorOf>
      <url>http://nexus-nexus.cloudapps.rhc-lab.iad.redhat.com/content/repositories/redhat-uspto</url>
-   <mirror>
+   </mirror>
  </mirrors>
 
  <proxies>
