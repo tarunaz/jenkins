@@ -15,7 +15,7 @@
       <!--This sends everything else to /public -->
       <id>nexus</id>
       <mirrorOf>*</mirrorOf>
-      <url>hhttp://nexus-nexus.cloudapps.rhc-lab.iad.redhat.com/content/groups/public</url>
+      <url>http://nexus-nexus.cloudapps.rhc-lab.iad.redhat.com/content/groups/public</url>
     </mirror>
   </mirrors>
   
