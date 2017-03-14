@@ -7,7 +7,7 @@ An example demonstrating Jenkins S2I features for installing plugins, configurin
 1. Create a new OpenShift project, where the Jenkins server will run:
 
   ```
-  $ oc new-project ci --display-name="CI/CD"
+  $ oc new-project jenkins --display-name="jenkins"
   ```
 
 2. Give the Jenkins Pod service account rights to do API calls to OpenShift. This allows us to do the Jenkins Slave image discovery automatically.

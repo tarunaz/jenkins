@@ -13,7 +13,7 @@ objects:
   kind: ImageStream
   metadata:
     annotations:
-      slave-directory: /var/lib/jenkins
+      slave-directory: /home/jenkins 
       slave-label: ${SLAVE_LABEL}
     labels:
       role: jenkins-slave
@@ -53,7 +53,7 @@ parameters:
   displayName: Image Name
   name: IMAGE_NAME
   required: true
-  value: rhel7/rhel
+  value: openshift3/jenkins-slave-maven-rhel7
 - description: Label for slave pods which are used by Jenkins to discover slave pods and assign jobs to them
   displayName: Jenkins Slave Label
   name: SLAVE_LABEL
